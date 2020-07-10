@@ -57,3 +57,13 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
         if hashmap.get(target - num) is not None:
             return [i, hashmap.get(target - num)]
         hashmap[num] = i
+
+"""
+修改上个算法中的判断条件 -> 60ms
+"""
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+    hashmap = {}
+    for i, num in enumerate(nums):
+        if target - num in hashmap:# key in dict 比 dict.get(key) 要更快一些
+            return [i, hashmap.get(target - num)]
+        hashmap[num] = i
